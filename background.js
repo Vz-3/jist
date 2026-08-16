@@ -1,18 +1,42 @@
-const site1 = "https://ph.jobstreet.com/job"
+const base_path = '/scripts'
+const supported_sites = [
+    { keyword: 'jobstreet.com', script: [`${base_path}/jobstreet.js`] },
+    { keyword: 'linkedin.com', script: [`${base_path}/linkedin.js`] },
+    { keyword: 'indeed.com', script: [`${base_path}/indeed.js`]}
+];
+
+chrome.runtime.onInstalled.addListener(() => {
+    chrome.action.setBadgeText({
+        text: ""
+    });
+});
 
 chrome.action.onClicked.addListener(async (tab) => {
-    if (tab.url.startsWith(site1)) {
-        const [{ result, ...rest }] = await chrome.scripting.executeScript({
-            target: { tabId: tab.id },
-            files: ['/scripts/jobstreet.js']
-        });
+    const matchedSite = supported_sites.find(site => tab.url.includes(site.keyword));
 
+    if (matchedSite) {
         await chrome.action.setBadgeText({
             tabId: tab.id,
-            text: "DONE"
+            text: "WAIT"
         });
 
-        await chrome.scripting.executeScript({
+        const [res] = await chrome.scripting.executeScript({
+            target: { tabId: tab.id },
+            files: matchedSite.script
+        });
+
+        const result = res?.result;
+
+        if (result === null || result === undefined) {
+            await chrome.action.setBadgeText({
+                tabId: tab.id,
+                text: "ERR1"
+            });
+            console.warn("Script returned no data or null");
+            return;
+        }
+        
+        const [copy] = await chrome.scripting.executeScript({
             target: { tabId: tab.id },
             func: async (data) => {
                 window.focus();
@@ -23,16 +47,30 @@ chrome.action.onClicked.addListener(async (tab) => {
                         .join('\t');
 
                     await navigator.clipboard.writeText(rowString);
+                    return true
                 } catch (err) {
                     console.error("Failed to copy: ", err);
+                    return null
                 }
             },
             args: [result]
         });
 
-        await chrome.action.setBadgeText({
-            tabId: tab.id,
-            text: ""
-        });
+        const copy_res = copy?.result;
+
+        if (copy_res === null || copy_res === undefined) {
+            await chrome.action.setBadgeText({
+                tabId: tab.id,
+                text: "ERR2"
+            });
+            console.warn("Script failed to copy to clipboard");
+            return;
+        } else {
+            await chrome.action.setBadgeText({
+                tabId: tab.id,
+                text: "DONE"
+            });
+            return true;
+        }
     }
 });

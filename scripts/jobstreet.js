@@ -1,17 +1,18 @@
 function extractDetails() {
-    const job_title = document.querySelector('[data-automation="job-detail-title"]').textContent;
-    const company = document.querySelector('[data-automation="advertiser-name"]').textContent;
-    const job_location = document.querySelector('[data-automation="job-detail-location"]').textContent;
-    const job_type = document.querySelector('[data-automation="job-detail-work-type"]').textContent;
+    if (!window.location.pathname.includes('job')) {
+        return null
+    }
+
+    const q = (id) => { return document.querySelector(id)?.textContent?.trim() ?? null };
 
     return {
-        "job_title": job_title,
-        "company": company,
-        "job_location": job_location,
-        "job_type": job_type,
+        "job_title": q('[data-automation="job-detail-title"]'),
+        "company": q('[data-automation="advertiser-name"]'),
+        "job_location": q('[data-automation="job-detail-location"]'),
+        "job_type": q('[data-automation="job-detail-work-type"]'),
         "date": new Date().toISOString().split('T')[0],
         "site": window.location.hostname,
-        "url": window.location.href
+        "url": window.location.href,
     }
 }
 

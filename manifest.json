@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "Jistify",
-    "description": "extract common elements from job boards",
+    "description": "extract common elements from a job post with a keyboard shortcut. Supports linkedin, jobstreet, and indeed.",
     "version": "1.0.0",
     "action": {
         "default_title": "Jistify",
@@ -15,7 +15,7 @@
     "background": {
         "service_worker": "background.js"
     },
-    "permissions": ["activeTab", "scripting", "storage"],
+    "permissions": ["activeTab", "scripting"],
     "commands": {
         "_execute_action": {
             "suggested_key": {

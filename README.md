@@ -5,8 +5,10 @@ Attributes:
 - Job Title
 - Location
 - Company
+- Employment type (full-time, part-time, etc. )
 - Description / Content
 - Work Setting
+- Date posted / Current Date
 - Job Site
 - Job Url / ID
 

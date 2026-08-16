@@ -17,9 +17,9 @@ Exports data as tab-separated values (tsv).
 ## Supported:
 |Platform|URL Patterns|Status|
 |--------|------------|------|
-|LinkedIn|[https://www.linkedin.com/jobs/](https://www.linkedin.com/jobs/)*|✅ Supported|
-|Indeed|[https://ph.indeed.com/?vjk=](https://ph.indeed.com/?vjk=)*[https://ph.indeed.com/cmp/*/jobs?jk=](https://ph.indeed.com/cmp/*/jobs?jk=)*|✅ Supported|
-|Jobstreet|[https://ph.jobstreet.com/*-jobs?jobId=](https://ph.jobstreet.com/*-jobs?jobId=)*[https://ph.jobstreet.com/jobs?jobId=](https://ph.jobstreet.com/jobs?jobId=)*[https://ph.jobstreet.com/job/](https://ph.jobstreet.com/job/)*|✅ Supported|
+|LinkedIn|[search](https://www.linkedin.com/jobs/search_results),[view](https://www.linkedin.com/jobs/view)|✅ Supported|
+|Indeed|[default](https://ph.indeed.com/?vjk=*),[company](https://ph.indeed.com/cmp/*/jobs?jk=*)|✅ Supported|
+|Jobstreet|[default](https://ph.jobstreet.com/jobs?jobId=*),[search](https://ph.jobstreet.com/*-jobs?jobId=*),[js-disabled](https://ph.jobstreet.com/job/*)|✅ Supported|
 
 ## Error Codes:
 |Error Code|Description|

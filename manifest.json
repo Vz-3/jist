@@ -1,10 +1,10 @@
 {
     "manifest_version": 3,
-    "name": "Jistify",
+    "name": "Jist",
     "description": "extract common elements from a job post with a keyboard shortcut. Supports linkedin, jobstreet, and indeed.",
     "version": "1.0.0",
     "action": {
-        "default_title": "Jistify",
+        "default_title": "Jist",
         "default_icon": {
             "16": "icons/icon16.png",
             "32": "icons/icon32.png",

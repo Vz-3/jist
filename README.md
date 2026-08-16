@@ -32,6 +32,7 @@ Exports data as tab-separated values (tsv).
 2. access `{browser_name}://extensions` e.g. `brave://extensions`
 3. enable developer mode
 4. click **load unpacked** button, select the *repository* folder
+5. (Optional) change `manifest.json` preferred keyboard shortcut (default `Ctrl+Shift+Space`)
 
 ### Misc
 - LinkedIn is very brittle.

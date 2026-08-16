@@ -27,5 +27,11 @@ Exports data as tab-separated values (tsv).
 |ERR1|Data extraction script error|
 |ERR2|Copy script error|
 
+### Instructions
+1. git clone repository
+2. access `{browser_name}://extensions` e.g. `brave://extensions`
+3. enable developer mode
+4. click **load unpacked** button, select the *repository* folder
+
 ### Misc
 - LinkedIn is very brittle.

@@ -1,57 +1,27 @@
-Quickly get the gist of the job. 
+Quickly get the gist of the job you've applied for. 
 Supports Linkedin, Jobstreet, and Indeed.
+Exports data as tab-separated values (tsv).
 
-Attributes:
+Attributes (highly dependent on the structure of the supported sites):
 - Job Title
 - Location
 - Company
-- Employment type (full-time, part-time, etc. )
-- Description / Content
-- Work Setting
-- Date posted / Current Date
+- Job / Employment type (full-time, part-time, ...)
+- Work Setting (hybrid, in-person, ...)
+- Date posted fallbacks to Current Date
 - Job Site
 - Job Url / ID
 
 Save in CSV or JSON format
 
-"https://www.linkedin.com/jobs/*", 
-"https://*.indeed.com/?vjk=*", 
-"https://*.jobstreet.com/*-jobs?jobId=*",
-"https://*.jobstreet.com/jobs?jobId=*",
-"https://*.jobstreet.com/job/*", # for ssr.
-38393C
+Supported:
+"https://www.linkedin.com/jobs/*", WIP
+"https://ph.indeed.com/?vjk=*", 
+"https://ph.indeed.com/cmp/*/jobs?jk=*"
+"https://ph.jobstreet.com/*-jobs?jobId=*",
+"https://ph.jobstreet.com/jobs?jobId=*",
+"https://ph.jobstreet.com/job/*"
 
-    "content_scripts": [
-        {
-            "js": ["scripts/content.js"],
-            "matches": [
-                "https://www.linkedin.com/jobs/*", 
-                "https://*.indeed.com/?vjk=*", 
-                "https://*.jobstreet.com/*-jobs?jobId=*",
-                "https://*.jobstreet.com/jobs?jobId=*",
-                "https://*.jobstreet.com/job/*"
-            ]
-        }
-    ],
-
-
-    "permissions": ["activeTab", "scripting", "storage"],
-    "commands": {
-        "_execute_action": {
-            "suggested_key": {
-                "default": "Ctrl+Shift+Space",
-                "mac": "Ctrl+Shift+Space"
-            }
-        }
-    }
-
-    "action": {
-        "default_popup": "popup/popup.html",
-        "default_title": "gist",
-        "default_icon": {
-            "16": "icons/icon16.png",
-            "32": "icons/icon32.png",
-            "48": "icons/icon48.png",
-            "128": "icons/icon128.png"
-        }
-    },
+Error Codes:
+ERR1 = Extract script error
+ERR2 = Copy script error
